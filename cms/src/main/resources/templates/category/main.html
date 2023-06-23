@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en"
+      layout:decorate="~{layouts/adminLayout}"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Category</title>
+</head>
+<body>
+<div class="content" layout:fragment="content">
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header">
+                    <h1>Category Management</h1>
+                </div>
+                <div class="card-body">
+                    <table class="table table-striped">
+                        <thead>
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Name</th>
+                            <th scope="col">IsDeleted</th>
+                            <th scope="col">Action</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr th:each="category : ${categories}"
+                            th:object="${category}">
+                            <td th:text="*{id}"></td>
+                            <td th:text="*{name}"></td>
+                            <td>
+                                <span th:text="*{isDeleted}"
+                                      class="mb-2 mr-2 badge badge-pill badge-success">
+                                </span>
+                            </td>
+                            <td>
+                                <a class="text-primary" href="#">View</a>|
+                                <a class="text-success" href="#">Edit</a>|
+                                <a class="text-danger" href="#">Delete</a>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

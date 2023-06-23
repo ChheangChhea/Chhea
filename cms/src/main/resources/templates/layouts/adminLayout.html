@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+
+  <th:block th:replace="~{fragments/meta}"></th:block>
+
+  <title layout:title-pattern="$CONTENT_TITLE - $LAYOUT_TITLE">CMS</title>
+
+  <th:block th:replace="~{fragments/styles}"></th:block>
+
+  <th:block th:replace="~{fragments/headScripts}"></th:block>
+</head>
+
+
+<body class="header-fixed sidebar-fixed sidebar-dark header-light" id="body">
+
+<script>
+  NProgress.configure({showSpinner: false});
+  NProgress.start();
+</script>
+
+
+<div class="wrapper">
+
+  <!-- Left sidebar -->
+  <div th:replace="~{fragments/leftSideBar}"></div>
+
+  <div class="page-wrapper">
+
+    <!-- Header -->
+    <div th:replace="~{fragments/header}"></div>
+
+    <div class="content-wrapper">
+      <div class="content" layout:fragment="content">
+        <!--
+          Child layout will render here!
+         -->
+      </div>
+
+      <!-- Right sidebar -->
+      <div th:replace="~{fragments/rightSideBar}"></div>
+
+    </div>
+
+  </div>
+</div>
+
+<th:block th:replace="~{fragments/scripts}"></th:block>
+
+<th:block layout:fragment="scripts">
+  <!--
+    Child script will render here!
+  -->
+</th:block>
+
+</body>
+
+</html>

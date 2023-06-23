@@ -1,0 +1,130 @@
+<aside class="left-sidebar bg-sidebar">
+    <div class="sidebar sidebar-without-footer" id="sidebar">
+        <!-- Aplication Brand -->
+        <div class="app-brand">
+            <a href="/index.html" title="Sleek Dashboard">
+                <svg
+                        class="brand-icon"
+                        height="33"
+                        preserveAspectRatio="xMidYMid"
+                        viewBox="0 0 30 33"
+                        width="30"
+                        xmlns="http://www.w3.org/2000/svg"
+                >
+                    <g fill="none" fill-rule="evenodd">
+                        <path
+                                class="logo-fill-blue"
+                                d="M0 4v25l8 4V0zM22 4v25l8 4V0z"
+                                fill="#7DBCFF"
+                        />
+                        <path class="logo-fill-white" d="M11 4v25l8 4V0z" fill="#FFF"/>
+                    </g>
+                </svg>
+                <span class="brand-name text-truncate">Sleek Dashboard</span>
+            </a>
+        </div>
+        <!-- begin sidebar scrollbar -->
+        <div class="sidebar-scrollbar">
+
+            <!-- sidebar menu -->
+            <ul class="nav sidebar-inner" id="sidebar-menu">
+
+
+                <li class="has-sub">
+                    <a aria-controls="dashboard" aria-expanded="false" class="sidenav-item-link"
+                       data-target="#dashboard"
+                       data-toggle="collapse" href="javascript:void(0)">
+                        <i class="mdi mdi-view-dashboard-outline"></i>
+                        <span class="nav-text">Dashboard</span> <b class="caret"></b>
+                    </a>
+                    <ul class="collapse" data-parent="#sidebar-menu"
+                        id="dashboard">
+                        <div class="sub-menu">
+
+
+                            <li>
+                                <a class="sidenav-item-link" th:href="@{/dashboard}">
+                                    <span class="nav-text">General</span>
+                                </a>
+                            </li>
+
+
+                            <li>
+                                <a class="sidenav-item-link" th:href="@{/statistic}">
+                                    <span class="nav-text">Statistic</span>
+                                </a>
+                            </li>
+
+
+                        </div>
+                    </ul>
+                </li>
+
+
+                <li class="has-sub">
+                    <a aria-controls="category" aria-expanded="false" class="sidenav-item-link" data-target="#category"
+                       data-toggle="collapse" href="javascript:void(0)">
+                        <i class="mdi mdi-pencil-box-multiple"></i>
+                        <span class="nav-text">Category</span> <b class="caret"></b>
+                    </a>
+                    <ul class="collapse" data-parent="#sidebar-menu"
+                        id="category">
+                        <div class="sub-menu">
+
+
+                            <li>
+                                <a class="sidenav-item-link" th:href="@{/category/form}">
+                                    <span class="nav-text">Create New</span>
+
+                                </a>
+                            </li>
+
+
+                            <li>
+                                <a class="sidenav-item-link" th:href="@{/category}">
+                                    <span class="nav-text">Data Table</span>
+
+                                </a>
+                            </li>
+
+
+                        </div>
+                    </ul>
+                </li>
+
+                <li class="has-sub">
+                    <a aria-controls="content" aria-expanded="false" class="sidenav-item-link" data-target="#content"
+                       data-toggle="collapse" href="javascript:void(0)">
+                        <i class="mdi mdi-pencil-box-multiple"></i>
+                        <span class="nav-text">Content</span> <b class="caret"></b>
+                    </a>
+                    <ul class="collapse" data-parent="#sidebar-menu"
+                        id="content">
+                        <div class="sub-menu">
+
+
+                            <li>
+                                <a class="sidenav-item-link" th:href="@{/content/form}">
+                                    <span class="nav-text">Create New</span>
+
+                                </a>
+                            </li>
+
+
+                            <li>
+                                <a class="sidenav-item-link" th:href="@{/content}">
+                                    <span class="nav-text">Data Table</span>
+
+                                </a>
+                            </li>
+
+
+                        </div>
+                    </ul>
+                </li>
+
+            </ul>
+
+        </div>
+    </div>
+</aside>

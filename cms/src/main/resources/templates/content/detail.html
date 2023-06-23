@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:th="http://www.thymeleaf.org"
+      layout:decorate="~{layouts/adminLayout}">
+<head>
+  <title th:text="${content.title}">Content Detail</title>
+</head>
+<body>
+<div class="content" layout:fragment="content">
+  <div class="row">
+    <div class="col-12">
+      <div class="card">
+        <div class="card-body">
+          <h1 th:text="${content.title}"></h1>
+          <div th:utext="${content.editor}">
+            <hr>
+            <p class="p-3" th:text="${content.category.name}"> </p>
+            <hr>
+          </div>
+          <p th:text="${content}"></p>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

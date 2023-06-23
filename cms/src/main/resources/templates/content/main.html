@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:th="http://www.thymeleaf.org"
+      layout:decorate="~{layouts/adminLayout}">
+<head>
+  <title>Content</title>
+</head>
+<body>
+<div class="content" layout:fragment="content">
+  <div class="row">
+    <div class="col-12">
+      <div class="card">
+        <div class="card-header">
+          <h1>Content Management</h1>
+        </div>
+        <div class="card-body">
+          <table class="table table-striped">
+            <thead>
+            <tr>
+              <th scope="col">Slug</th>
+              <th scope="col">Title</th>
+              <th scope="col">Keyword</th>
+              <th scope="col">Description</th>
+              <th scope="col">Thumbnail</th>
+              <th scope="col">Created At</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="content : ${contents}"
+                th:object="${content}">
+              <td th:text="*{slug}"></td>
+              <td th:text="*{title}"></td>
+              <td th:text="*{keyword}"></td>
+              <td th:text="*{description}"></td>
+              <td>
+                <img style="width: 50px" th:src="@{/file/{thumbnail}(thumbnail=*{thumbnail})}" class="user-image" alt="User Image">
+              </td>
+              <td th:text="*{createdAt}"></td>
+
+
+              <td>
+                <a  class="text-primary btn-danger w-25 p-2"
+                    th:href="@{/content/{id}/delail(id=*{id})}">View</a>|
+                <a class="text-success bg-dark w-25 p-2"
+                   th:href="@{/content/{id}/edit(id=*{id})}">Edit</a>|
+
+                <a class="text-danger actionDeleteContent bg-success w-25 p-2"
+                   data-toggle="modal"
+                   data-target="#confirmationModal"
+                    th:data-id="*{id}" >Delete</a>
+              </td>
+            </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div th:replace="~{fragments/modal :: confirmationModal}"></div>
+  </div>
+
+  <th:block layout:fragment="scripts">
+    <script>
+      $('.actionDeleteContent').on('click', function(e) {
+        let id = $(this).attr('data-id')
+       $('#confirmSubmit').attr('action',`/admin/content/${id}/delete`)
+      })
+    </script>
+  </th:block>
+</body>
+</html>

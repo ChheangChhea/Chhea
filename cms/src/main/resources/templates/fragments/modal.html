@@ -1,0 +1,24 @@
+<section>
+  <!-- Confirmation modal -->
+  <div th:fragment="confirmationModal" class="modal fade" id="confirmationModal" tabindex="-1" role="dialog" aria-labelledby="confirmationModalLabel" aria-modal="true" style="display: none;">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="confirmationModalLabel">Confirmation</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">×</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          Are you sure to process it?
+        </div>
+        <div class="modal-footer">
+          <form id="confirmSubmit" method="post">
+            <button type="button" class="btn btn-danger btn-pill" data-dismiss="modal">Close</button>
+            <button type="submit" class="btn btn-primary btn-pill">Yes, Sure</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
