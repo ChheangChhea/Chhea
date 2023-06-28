@@ -123,6 +123,36 @@
                     </ul>
                 </li>
 
+                <li class="has-sub">
+                    <a aria-controls="content" aria-expanded="false" class="sidenav-item-link" data-target="#user"
+                       data-toggle="collapse" href="javascript:void(0)">
+                        <i class="mdi mdi-pencil-box-multiple"></i>
+                        <span class="nav-text">Content</span> <b class="caret"></b>
+                    </a>
+                    <ul class="collapse" data-parent="#sidebar-menu"
+                        id="user">
+                        <div class="sub-menu">
+
+
+                            <li>
+                                <a class="sidenav-item-link" th:href="@{/user/form}">
+                                    <span class="nav-text">Create New</span>
+
+                                </a>
+                            </li>
+
+
+                            <li>
+                                <a class="sidenav-item-link" th:href="@{/user}">
+                                    <span class="nav-text">Data Table</span>
+
+                                </a>
+                            </li>
+
+
+                        </div>
+                    </ul>
+                </li>
             </ul>
 
         </div>

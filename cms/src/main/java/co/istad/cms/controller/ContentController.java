@@ -28,42 +28,53 @@ public class ContentController {
 
         modelMap.addAttribute("categories", categoryService.findCategories());
         modelMap.addAttribute("content", content);
+        modelMap.addAttribute("isEditAction", false);
 
         return "content/form";
     }
 
     @PostMapping
-    public String saveContent(Content content, @RequestParam("fileThumbnail") MultipartFile thumbnail) {
+    public String saveContent(Content content,
+                              @RequestParam("isEditAction") Boolean isEditAction,
+                              @RequestParam("fileThumbnail") MultipartFile thumbnail
 
+                              ) {
         System.out.println(content);
         System.out.println(content.getCategory().getId());
         System.out.println(thumbnail.getOriginalFilename());
 
-        contentService.saveContent(content, thumbnail);
+        System.out.println(isEditAction);
+
+        if(isEditAction){
+            contentService.editContentById(content);
+        }else {
+            contentService.saveContent(content,thumbnail);
+        }
 
         return "redirect:/content";
     }
- @PostMapping("/{id}/delete")
- public String deleteContentById(@PathVariable Integer id){
-     contentService.deleteContentById(id);
-     return "redirect:/content";
- }
 
-@GetMapping("/{id}/detail")
-    public  String viewContentDetail(@PathVariable Integer id ,ModelMap modelMap){
-        modelMap.addAttribute("content",contentService.findContentById(id));
+    @GetMapping("/{id}/delete")
+    public String deleteContentById(@PathVariable Integer id) {
+        contentService.deleteContentById(id);
+        return "redirect:/content";
+    }
+
+    @GetMapping("/{id}/detail")
+    public String viewContentDetail(@PathVariable Integer id, ModelMap modelMap) {
+        modelMap.addAttribute("content", contentService.findContentById(id));
         return "content/detail";
+    }
 
-}
-//
-//@GetMapping("/{id}/edit")
-//    public String edit(@PathVariable Integer id ,ModelMap modelMap){
-//
-//
-//        modelMap.addAttribute("content",)
-//
-//
-//        return "content/form";
-//}
+    //
+    @GetMapping("/{id}/edit")
+    public String viewEditController(@PathVariable("id") Integer id, ModelMap modelMap) {
+
+        Content editContent = contentService.findContentById(id);
+        modelMap.addAttribute("categories", categoryService.findCategories());
+        modelMap.addAttribute("content", editContent);
+        modelMap.addAttribute("isEditAction", true);
+        return "content/form";
+    }
 
 }

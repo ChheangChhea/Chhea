@@ -15,5 +15,6 @@ public interface ContentService {
 
     Content findContentById(Integer id);
 
+   void editContentById(Content editContent );
 
 }

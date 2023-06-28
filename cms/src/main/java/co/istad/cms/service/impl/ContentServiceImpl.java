@@ -45,7 +45,7 @@ public class ContentServiceImpl implements ContentService {
 
     @Override
     public void deleteContentById(Integer id) {
-        boolean isDeleted =contentRepository.updateIsDeletedById(id,true);
+        boolean isDeleted =contentRepository.deleteById(id);
         if(!isDeleted){
             throw new RuntimeException("Content is failed to delete");
         }
@@ -53,11 +53,21 @@ public class ContentServiceImpl implements ContentService {
 
     @Override
     public Content findContentById(Integer id) {
-        Content content= contentRepository.selectById(id).orElseThrow(
+        Content content = contentRepository.selectById(id).orElseThrow(
                 () -> new RuntimeException(" This Error")
         );
 
-
       return content;
+    }
+
+    @Override
+    public void editContentById( Content editContent ) {
+
+       try {
+           contentRepository.update(editContent);
+       }
+       catch (RuntimeException e){
+           throw  new RuntimeException(e.getMessage());
+       }
     }
 }

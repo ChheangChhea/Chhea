@@ -12,15 +12,19 @@
     <div class="col-12">
       <div class="card">
         <div class="card-body">
-          <h1 th:text="${content.title}"></h1>
-          <div th:utext="${content.editor}">
+          <h1 class="p-3 bg-success" th:text="${content.title}"></h1>
+          <div class="p-3 bg-danger" th:utext="${content.editor}"></div>
             <hr>
             <p class="p-3" th:text="${content.category.name}"> </p>
+          <hr>
+            <span th:text="${content.createdAt}"> </span>
             <hr>
-          </div>
+            <img th:src="@{/file/{thumbnail}(thumbnail=${content.thumbnail})}" th:alt=" ${content.title}" >
+          <hr>
+          <p th:text="${content.description}"> </p>
+          <hr>
           <p th:text="${content}"></p>
-
-        </div>
+      </div>
       </div>
     </div>
   </div>

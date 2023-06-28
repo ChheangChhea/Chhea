@@ -29,6 +29,7 @@
             <tbody>
             <tr th:each="content : ${contents}"
                 th:object="${content}">
+
               <td th:text="*{slug}"></td>
               <td th:text="*{title}"></td>
               <td th:text="*{keyword}"></td>
@@ -38,17 +39,20 @@
               </td>
               <td th:text="*{createdAt}"></td>
 
-
               <td>
                 <a  class="text-primary btn-danger w-25 p-2"
-                    th:href="@{/content/{id}/delail(id=*{id})}">View</a>|
+                    th:href="@{/content/{id}/detail(id=*{id})}">View</a>|
                 <a class="text-success bg-dark w-25 p-2"
                    th:href="@{/content/{id}/edit(id=*{id})}">Edit</a>|
 
-                <a class="text-danger actionDeleteContent bg-success w-25 p-2"
-                   data-toggle="modal"
-                   data-target="#confirmationModal"
-                    th:data-id="*{id}" >Delete</a>
+                <a class="text-success bg-dark w-25 p-2"
+                   th:href="@{/content/{id}/delete(id=*{id})}">Delete</a>|
+
+
+<!--                <a class="text-danger actionDeleteContent bg-success w-25 p-2"-->
+<!--                   data-toggle="modal"-->
+<!--                   data-target="#confirmationModal"-->
+<!--                    th:data-id="*{id}" >Delete</a>-->
               </td>
             </tr>
             </tbody>
@@ -60,13 +64,12 @@
   <div th:replace="~{fragments/modal :: confirmationModal}"></div>
   </div>
 
-  <th:block layout:fragment="scripts">
-    <script>
-      $('.actionDeleteContent').on('click', function(e) {
-        let id = $(this).attr('data-id')
-       $('#confirmSubmit').attr('action',`/admin/content/${id}/delete`)
-      })
-    </script>
-  </th:block>
+<script>
+  $('.actionDeleteContent').on('click', function(e) {
+    let id = $(this).attr('data-id')
+    $('#confirmSubmit').attr('action', `http://localhost:8080/content/${id}/delete`)
+  })
+
+</script>
 </body>
 </html>

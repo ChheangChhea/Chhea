@@ -14,8 +14,6 @@ public interface CategoryRepository {
             """)
     boolean delete(@Param("id") Integer id);
 
-
-
     @Select("""
             SELECT *
             FROM categories

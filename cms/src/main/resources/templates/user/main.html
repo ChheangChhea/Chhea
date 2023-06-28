@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:th="http://www.thymeleaf.org"
+      layout:decorate="~{layouts/adminLayout}">
+<head>
+    <title>Content</title>
+</head>
+<body>
+<div class="content" layout:fragment="content">
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header">
+                    <h1>Content Management</h1>
+                </div>
+                <div class="card-body">
+                    <table class="table table-striped">
+                        <thead>
+                        <tr>
+                            <th scope="col">uuid</th>
+                            <th scope="col">UserName</th>
+                            <th scope="col">Password</th>
+                            <th scope="col">DisplayName</th>
+                            <th scope="col">isDeleted</th>
+                            <th scope="col">createdAt</th>
+                            <th scope="col">CreatedAt</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+
+                            <td>
+                                <a  class="text-primary btn-danger w-25 p-2"
+                                    th:href="@{/content/{id}/detail(id=*{id})}">View</a>|
+                                <a class="text-success bg-dark w-25 p-2"
+                                   th:href="@{/content/{id}/edit(id=*{id})}">Edit</a>|
+
+                                <a class="text-success bg-dark w-25 p-2"
+                                   th:href="@{/content/{id}/delete(id=*{id})}">Delete</a>|
+
+
+
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div th:replace="~{fragments/modal :: confirmationModal}"></div>
+</div>
+
+<script>
+    $('.actionDeleteContent').on('click', function(e) {
+        let id = $(this).attr('data-id')
+        $('#confirmSubmit').attr('action', `http://localhost:8080/content/${id}/delete`)
+    })
+
+</script>
+</body>
+</html>
